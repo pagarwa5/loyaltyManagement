@@ -1,0 +1,61 @@
+<form>
+   
+    <small *ngIf="ruleError" id="ruleError" class="text-danger">
+       item not selected select an item
+    </small> 
+    <div *ngIf="loyaltyResponse!=null" class="alert alert-success">
+        <strong>Success!</strong> rule created successfully
+    </div>
+    
+    <div *ngIf="!validRule && ruleCall" class="alert alert-danger">
+        <strong>Not Found!</strong> rule does not exists.
+    </div>
+    <div *ngIf="ruleExists && createRulecall" class="alert alert-danger">
+        <strong>Not Found!</strong> rule already exists.
+    </div>
+    <div class="form-group col-xs-6" >
+        <label for="items">Items</label>
+        <select id="items" [(ngModel)]="rule.selectedItem" name="items" class="form-control" >       
+            <option *ngFor="let item of selectableItems"
+                    [value]="item.name">
+              {{ item.name }}
+            </option>
+      </select>
+    </div>
+    <div class="form-group col-xs-6">
+      <label for="brands">Brands</label>
+      <select id="vrands" [(ngModel)]="rule.selectedBrand" name="brands" class="form-control" >           
+        <option *ngFor="let brand of brands"
+                  [value]="brand">
+            {{brand}}
+          </option>
+    </select>
+  </div>
+    <div class="form-group col-lg-6">
+      <label for="amount">Amount</label>
+      <input type="number" class="form-control" id="amount" [(ngModel)]="rule.pointValue" name="amount">
+    </div>
+    <div class="form-group col-lg-6">
+      <label for="points">Points</label>
+      <input type="number" class="form-control" id="points" [(ngModel)]="rule.points" name="points">
+    </div>
+    <!--<div class="form-group col-lg-6">
+      <label for="availablePoints">Available Points</label>
+      <input type="number" class="form-control" id="availablePoints">
+    </div>
+    <div class="form-group col-lg-6">
+      <label for="eqivAmount">Equivalent Amount</label>
+      <input type="number" class="form-control" id="eqivAmount">
+    </div>-->
+
+    <div class="form-group">
+      <label for="expiry">Expiry Date</label>
+      <input type="text" class="form-control" id="expiry" [(ngModel)]="rule.expiry" placeholder="yyyy-mm-dd" name="expiry">
+    </div>
+  <div class="col-lg-6"> 
+    <button type="submit" class="btn btn-primary" (click)="createRule()" name="submit">create Rule</button>
+    </div>
+    <div class="col-lg-6"> 
+        <button type="submit" class="btn btn-primary" (click)="getRule()" name="submit">check rule</button>
+    </div>
+  </form>

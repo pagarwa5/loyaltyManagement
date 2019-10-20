@@ -1,0 +1,24 @@
+
+<hr>
+<h4><i>click on item to purchase</i></h4>
+<hr>
+<div class="col-xs-12">
+        <label>Amount of items selected : </label>  <label>{{totalSum}}</label>
+</div>
+<div class="row">
+        <div  class="col-xs-12" *ngFor="let item of items">
+           <a type="button" [ngStyle]="{backgroundColor:getColor(item)}"  (click)="sumAmount(item)"
+            class="list-group-item clearfix pointer" *ngIf="item.name!='select item'" >
+               <div  class="pull-left">
+                   <h4 class="list-group-item-heading">{{item.name}}</h4>
+                   <p  class="list-group-item-text">&#8377;{{item.amount}}</p>
+               </div>
+               <span class="pull-right">
+                   <img [src]="item.imageUrl" class="img-responsive" style="max-height: 50px;">
+               </span>
+               
+           </a>
+         
+        </div>
+
+</div>

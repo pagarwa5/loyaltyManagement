@@ -1,0 +1,32 @@
+<form id="register-form" action="#" method="post" role="form" (ngSubmit)="registerMerchant()">
+    <small *ngIf="merchantExists" id="merchantEror" class="text-danger">
+        Merchant already exists.
+    </small>  
+    <div *ngIf="registerResponse!=null" class="alert alert-success">
+        <strong>Success!</strong> registration successful
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" [(ngModel)]="merchant.userName">
+    </div>
+    <div class="form-group">
+        <label for="merchantName">Merchant name</label>
+        <input type="text" name="merchanr-name" id="merchant-name" tabindex="2" class="form-control" placeholder="merchant-name" [(ngModel)]="merchant.name">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" [(ngModel)]="merchant.password">
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm password</label>
+        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" [(ngModel)]="merchant.confPass">
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+          </div>
+          
+        </div>
+      </div>
+</form>

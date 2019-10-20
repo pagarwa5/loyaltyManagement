@@ -1,0 +1,38 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<div id="fullscreen_bg" class="fullscreen_bg"></div>
+<div id="regContainer" class="container">
+
+        <div class="row">             
+                <div class="col-xs-12">                  
+                    <app-header *ngIf="router.url!='/login' && this.router.url!='/register'"></app-header>                   
+                </div>
+              </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+             <div class="panel panel-login">
+                 <div class="panel-heading" *ngIf="router.url=='/login' || router.url=='/register'" >
+                     <div class="row">
+                        <div class="col-xs-6">
+                           <a href="/login"  id="login-form-link">Login</a>
+                         </div>
+                        <div class="col-xs-6">
+                             <a href="/register" id="register-form-link">Register</a>
+                         </div>
+                     </div>
+                     <hr>
+                </div>
+                <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <router-outlet></router-outlet>
+                                <!--<app-login></app-login>
+                                <app-register></app-register>-->
+                            </div>
+                        </div>
+                    <hr>
+                </div>
+             </div>
+          </div>
+    </div>
+ </div>
+   

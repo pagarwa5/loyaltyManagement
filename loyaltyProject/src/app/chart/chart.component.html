@@ -1,0 +1,31 @@
+<h3>
+        {{title}}!
+      </h3>
+      
+    <div>
+       
+        <canvas
+            baseChart
+            [chartType]="'bar'"
+            [datasets]="chartData"
+            [labels]="labels"
+            [options]="chartOptions"
+            [legend]="true"
+            [colors]="colors"
+            (chartClick)="onChartClick($event)">
+        </canvas>
+      </div>
+<h3> Pie chart for items sales in percentage</h3>
+<h4>(2017-2018)</h4>
+      <div>
+            <canvas
+                baseChart
+                [chartType]="'pie'"
+                [datasets]="pieChartData"
+                [labels]="pieChartLabels"
+                [options]="chartOptions"
+                [legend]="true"
+                [colors]="pieChartColor"
+                (chartClick)="onChartClick($event)">
+            </canvas>
+          </div>

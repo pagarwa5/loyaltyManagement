@@ -1,0 +1,24 @@
+
+<div class="form-group"><strong *ngIf="router.url=='/cancel'" id="paymentEror" class="text-danger">
+    Payment failed due to server issue!
+</strong></div>
+<form id="payment" action="" method="post" role="form" >   
+     
+    <div class="form-group" class="col-lg-6">
+        <label for="pointLabel">Total Points:</label>      
+        <label for="points" *ngIf="userDetails!=null" class="text-success">  {{userDetails.points}}  </label>              
+    </div>
+   
+    <div class="form-group" class="col-lg-6">
+            <label for="amountLabel">Total Amount:</label>  
+            <label for="amount" class="text-success">  {{totalAmount}}  </label>  
+            
+    </div>
+         
+   
+    <app-items></app-items>
+    <button class="form-control btn btn-primary" (click)="makePayment(10)"> make payment </button> 
+
+
+</form>
+

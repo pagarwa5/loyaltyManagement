@@ -1,0 +1,78 @@
+<div class="form-group col-xs-6">
+  <input type="submit" class="btn btn-primary" value="create user" (click)="userCreate =true; usersEmpty=true;userCallDone=false">
+ </div>
+ <div class="input-group col-xs-6">
+   <div class="input-group-btn">
+       <button class="btn btn-default" type="submit" (click)="getUserByMobile();userCreate=false"><i class="glyphicon glyphicon-search"></i></button>
+   </div>
+   <input type="text" class="form-control search" placeholder="Search Mobile" name="srch-term" id="srch-term" [(ngModel)]="mobile">                                      
+ </div>
+ 
+   <div class="form-group" class="error">
+ <small *ngIf="usersEmpty && userCallDone" id="userEror" class="text-danger">
+  users does not exists for provided search!!
+</small> </div>
+
+<form id="userRegister-form" style="margin-top:20px" *ngIf="userCreate" action="#" method="post" role="form" (ngSubmit)="registerUser()">
+    <small *ngIf="userExists && userResponse==null" id="userEror" class="text-danger error">
+        user exists change the data to register the user!!!
+    </small> 
+    <div *ngIf="userResponse!=null" class="alert alert-success">
+        <strong>Success!</strong> registered successfully
+    </div>
+
+
+  <div class="form-group">
+        <label for="username">User name</label>
+        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" [(ngModel)]="user.name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address (optional)</label>
+        <input type="email" name="email" id="email" tabindex="2" class="form-control" placeholder="email" [(ngModel)]="user.email">
+      </div>
+      <div class="form-group">
+        <label for="password">Mobile Number</label>
+        <input type="number" name="mobile" id="mobile" tabindex="2" class="form-control" placeholder="mobile" [(ngModel)]="user.mobile">
+      </div>
+      
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <input type="submit" name="register-submit" id="user-submit" tabindex="4" class="form-control btn btn-primary" value="Submit">
+          </div>
+          
+        </div>
+      </div>
+     
+      <!--<div *ngIf="userExists" class="form-group">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <input type="submit" name="register-submit" id="user-submit" tabindex="4" class="form-control btn btn-register" value="Login" (click)="router.navigate(['/payment']);">
+            </div>
+            
+          </div>
+        </div>-->
+</form>
+<div class="form-group" *ngIf="!usersEmpty">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Points</th>
+        <th>payment</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of usersByMobile">
+      <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.mobile}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.points}}</td>
+        <td><button type="submit" class="btn btn-primary" (click)="router.navigate(['/purchase']);" value="payment">payment</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
