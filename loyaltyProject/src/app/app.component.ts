@@ -17,6 +17,7 @@ constructor(private router:Router, private cdRef: ChangeDetectorRef){
 
 }
 ngOnInit() {
+	console.log("");
 
 }
 ngAfterViewChecked() {
