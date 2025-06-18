@@ -19,17 +19,17 @@ def get_pr_diff():
     python_diffs = ""
 
     for file in files:
-        if file["filename"].endswith(".py") and "patch" in file:
+        if file["filename"].endswith(".java") and "patch" in file:
             python_diffs += f"File: {file['filename']}\n{file['patch']}\n\n"
     return python_diffs
 
 def ask_ai_for_review(diff_text):
-    prompt = f"Review the following Python code diff for bugs, code smells, and poor practices. Suggest improvements:\n\n{diff_text}"
+    prompt = f"Review the following java code diff for bugs, code smells, and poor practices. Suggest improvements:\n\n{diff_text}"
 
     response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=[
-            {"role": "system", "content": "You are a senior Python code reviewer."},
+            {"role": "system", "content": "You are a senior java code reviewer."},
             {"role": "user", "content": prompt}
         ],
         temperature=0.3,
@@ -44,7 +44,7 @@ def post_comment(body):
 def main():
     diff_text = get_pr_diff()
     if not diff_text:
-        print("No Python changes to review.")
+        print("No java changes to review.")
         return
 
     review = ask_ai_for_review(diff_text)
